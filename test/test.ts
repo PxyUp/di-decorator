@@ -1,30 +1,43 @@
-import { diInject } from 'di-decorator';
+import { diInject } from '../src';
 
-const testInject = 'injectionOne';
-const testInject2 = 'injectionSecond';
+const oneToken = 'tokenOne';
+const secondToken = 'secondToken';
 
 class Test {
-  injectFirst: string;
+  injectToken: string;
   sr: string;
   constructor(sr: string) {
     this.sr = sr;
   }
 
   @diInject({
-    injectFirst: testInject,
+    injectToken: oneToken,
   })
-  call() {
-    console.log(this.injectFirst);
+  callFirstToken() {
+    console.group('First');
+    console.log(this.injectToken);
+    console.groupEnd();
   }
 
   @diInject({
-    injectFirst: testInject2,
+    injectToken: secondToken,
   })
-  callSecond(a) {
-    console.log(this.injectFirst, a, this.sr);
+  callSecondToken(a) {
+    console.group('Second');
+    console.log(this.injectToken);
+    this.callFirstToken();
+    console.groupEnd();
+  }
+
+  callThirdOne() {
+    console.group('Third');
+    this.callFirstToken();
+    this.callSecondToken(5);
+    console.groupEnd();
   }
 }
 
 const t = new Test('testing');
-t.call();
-t.callSecond(5);
+t.callFirstToken();
+t.callSecondToken(5);
+t.callThirdOne();

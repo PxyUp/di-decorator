@@ -17,34 +17,69 @@ $ yarn add di-decorator
 
 import { diInject } from 'di-decorator';
 
-const testInject = 'injectionOne';
-const testInject2 = 'injectionSecond';
+const oneToken = 'tokenOne';
+const secondToken = 'secondToken';
 
 class Test {
-  injectFirst: string;
+  injectToken: string;
   sr: string;
   constructor(sr: string) {
     this.sr = sr;
   }
 
   @diInject({
-    injectFirst: testInject,
+    injectToken: oneToken,
   })
-  call() {
-    console.log(this.injectFirst);
+  callFirstToken() {
+    console.group('First');
+    console.log(this.injectToken);
+    console.groupEnd();
   }
 
   @diInject({
-    injectFirst: testInject2,
+    injectToken: secondToken,
   })
-  callSecond(a) {
-    console.log(this.injectFirst, a, this.sr);
+  callSecondToken(a) {
+    console.group('Second');
+    console.log(this.injectToken);
+    this.callFirstToken();
+    console.groupEnd();
+  }
+
+  callThirdOne() {
+    console.group('Third');
+    this.callFirstToken();
+    this.callSecondToken(5);
+    console.groupEnd();
+    console.log(this.sr);
   }
 }
 
 const t = new Test('testing');
-t.call(); // injectionOne
-t.callSecond(5); // injectionSecond 5 testing
+t.callFirstToken();
+/*
+First
+  tokenOne
+*/
+t.callSecondToken(5);
+/*
+Second
+  secondToken
+  First
+    tokenOne
+*/
+t.callThirdOne();
+/*
+Third
+  First
+    tokenOne
+  Second
+    secondToken
+    First
+      tokenOne
+testing      
+*/
+
 
 ```
 
