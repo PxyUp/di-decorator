@@ -1,7 +1,7 @@
 {
   "name": "di-decorator",
   "description": "Dependency Injection library for TypeScript",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "repository": "git@github.com:PxyUp/di-decorator.git",
