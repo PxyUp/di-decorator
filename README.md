@@ -46,39 +46,50 @@ class Test {
     console.groupEnd();
   }
 
+  @diInject({
+    sr: 'changedSR',
+  })
   callThirdOne() {
     console.group('Third');
     this.callFirstToken();
     this.callSecondToken(5);
+    console.log('this.sr=', this.sr);
     console.groupEnd();
+  }
+
+  getOriginal() {
     console.log(this.sr);
   }
 }
 
-const t = new Test('testing');
+const t = new Test('originalSR');
 t.callFirstToken();
 /*
 First
-  tokenOne
+  this.injectToken=tokenOne
 */
 t.callSecondToken(5);
 /*
 Second
-  secondToken
+  this.injectToken=secondToken
   First
-    tokenOne
+    this.injectToken=tokenOne
+  this.injectToken=secondToken
 */
 t.callThirdOne();
 /*
 Third
   First
-    tokenOne
+    this.injectToken=tokenOne
   Second
-    secondToken
+    this.injectToken=secondToken
     First
-      tokenOne
-testing      
+      this.injectToken=tokenOne
+    this.injectToken=secondToken
+  this.sr=changedSR   
 */
+t.getOriginal();
+// originalSR
 
 
 ```

@@ -15,7 +15,7 @@ class Test {
   })
   callFirstToken() {
     console.group('First');
-    console.log(this.injectToken);
+    console.log('this.injectToken=', this.injectToken);
     console.groupEnd();
   }
 
@@ -24,20 +24,30 @@ class Test {
   })
   callSecondToken(a) {
     console.group('Second');
-    console.log(this.injectToken);
+    console.log('this.injectToken=', this.injectToken);
     this.callFirstToken();
+    console.log('this.injectToken=', this.injectToken);
     console.groupEnd();
   }
 
+  @diInject({
+    sr: 'changedSR',
+  })
   callThirdOne() {
     console.group('Third');
     this.callFirstToken();
     this.callSecondToken(5);
+    console.log('this.sr=', this.sr);
     console.groupEnd();
+  }
+
+  getOriginal() {
+    console.log(this.sr);
   }
 }
 
-const t = new Test('testing');
+const t = new Test('originalSR');
 t.callFirstToken();
 t.callSecondToken(5);
 t.callThirdOne();
+t.getOriginal();

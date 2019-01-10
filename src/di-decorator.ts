@@ -23,8 +23,6 @@ function _delete(obj: any, prop: string) {
 function applyProp(obj: any, propMap: { [key: string]: any }) {
   Object.keys(propMap).forEach((key) => {
     _delete(obj, key);
-  });
-  Object.keys(propMap).forEach((key) => {
     Object.defineProperty(obj, key, {
       get: () => propMap[key],
       enumerable: true,
