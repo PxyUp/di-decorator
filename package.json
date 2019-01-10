@@ -1,0 +1,16 @@
+{
+  "name": "di-decorator",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": "git@github.com:PxyUp/di-decorator.git",
+  "author": "Iurii Panarin <tduble94@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.2.2"
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:test": "tsc -p tsconfig.test.json"
+  }
+}

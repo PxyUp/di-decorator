@@ -1,18 +1,4 @@
-# Simple DI in class method in TS
-
-# How to use?
-
-```sh
-$ npm i di-decorator
-# OR
-$ yarn add di-decorator
-```
-
-## TypeScript
-
-```ts
-
-import { diInject } from 'di-decorator';
+import { diInject } from '../src';
 
 const testInject = 'injectionOne';
 const testInject2 = 'injectionSecond';
@@ -40,12 +26,5 @@ class Test {
 }
 
 const t = new Test('testing');
-t.call(); // injectionOne
-t.callSecond(5); // injectionSecond 5 testing
-
-```
-
-## Use cases
-
-1. Easy testing method class without any hard injections.
-2. Create simple DI in typescript project.
+t.call();
+t.callSecond(5);
