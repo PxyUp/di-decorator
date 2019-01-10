@@ -1,4 +1,4 @@
-import { diInject } from '../src';
+import { diInject } from 'di-decorator';
 
 const testInject = 'injectionOne';
 const testInject2 = 'injectionSecond';
