@@ -1,5 +1,8 @@
+[![Build Status](https://travis-ci.org/PxyUp/di-decorator.svg?branch=master)](https://travis-ci.org/PxyUp/di-decorator) ![Downloads](https://img.shields.io/npm/dm/di-decorator.svg)
+
 # Simple DI in class method in TS
 
+Dependency injection library for TypeScript
 # How to use?
 
 ```sh

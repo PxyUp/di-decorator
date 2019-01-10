@@ -12,5 +12,12 @@
   "scripts": {
     "build": "tsc",
     "build:test": "tsc -p tsconfig.test.json"
-  }
+  },
+  "keywords": [
+    "DI",
+    "dependency",
+    "injection",
+    "dependency injection",
+    "injector"
+  ]
 }
